@@ -1,0 +1,51 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --color-base-white: #ffffff;
+  --color-base-black: #000000;
+  --color-base-transparent: transparent;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --typography-font-family-primary: Mulish, sans-serif;
+  --typography-font-family-heading: Mulish, sans-serif;
+  --typography-font-family-mono: Fira Code, monospace;
+  --typography-size-xs: 12;
+  --typography-size-sm: 14;
+  --typography-size-base: 16;
+  --typography-size-lg: 18;
+  --typography-size-xl: 20;
+  --typography-size-2xl: 24;
+  --typography-size-3xl: 30;
+  --typography-size-4xl: 36;
+  --typography-size-5xl: 48;
+  --typography-size-6xl: 60;
+  --typography-weight-light: 300;
+  --typography-weight-normal: 400;
+  --typography-weight-medium: 500;
+  --typography-weight-semibold: 600;
+  --typography-weight-bold: 700;
+  --typography-weight-extrabold: 800;
+  --terra-green-light: #86efac;
+  --terra-green-primary: #22c55e;
+  --terra-green-dark: #15803d;
+  --terra-green-forest: #14532d;
+  --terra-earth-light: #fbbf24;
+  --terra-earth-primary: #a16207;
+  --terra-earth-dark: #78350f;
+  --terra-sky-light: #7dd3fc;
+  --terra-sky-primary: #0ea5e9;
+  --terra-sky-dark: #0c4a6e;
+  --terra-flower-pink: #f472b6;
+  --terra-flower-purple: #a855f7;
+  --terra-flower-orange: #fb923c;
+}

@@ -1,0 +1,49 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+export const ColorBaseWhite = "#ffffff";
+export const ColorBaseBlack = "#000000";
+export const ColorBaseTransparent = "transparent";
+export const ColorGray50 = "#f9fafb";
+export const ColorGray100 = "#f3f4f6";
+export const ColorGray200 = "#e5e7eb";
+export const ColorGray300 = "#d1d5db";
+export const ColorGray400 = "#9ca3af";
+export const ColorGray500 = "#6b7280";
+export const ColorGray600 = "#4b5563";
+export const ColorGray700 = "#374151";
+export const ColorGray800 = "#1f2937";
+export const ColorGray900 = "#111827";
+export const TypographyFontFamilyPrimary = "Mulish, sans-serif";
+export const TypographyFontFamilyHeading = "Mulish, sans-serif";
+export const TypographyFontFamilyMono = "Fira Code, monospace";
+export const TypographySizeXs = "12";
+export const TypographySizeSm = "14";
+export const TypographySizeBase = "16";
+export const TypographySizeLg = "18";
+export const TypographySizeXl = "20";
+export const TypographySize2xl = "24";
+export const TypographySize3xl = "30";
+export const TypographySize4xl = "36";
+export const TypographySize5xl = "48";
+export const TypographySize6xl = "60";
+export const TypographyWeightLight = "300";
+export const TypographyWeightNormal = "400";
+export const TypographyWeightMedium = "500";
+export const TypographyWeightSemibold = "600";
+export const TypographyWeightBold = "700";
+export const TypographyWeightExtrabold = "800";
+export const TerraGreenLight = "#86efac";
+export const TerraGreenPrimary = "#22c55e";
+export const TerraGreenDark = "#15803d";
+export const TerraGreenForest = "#14532d";
+export const TerraEarthLight = "#fbbf24";
+export const TerraEarthPrimary = "#a16207";
+export const TerraEarthDark = "#78350f";
+export const TerraSkyLight = "#7dd3fc";
+export const TerraSkyPrimary = "#0ea5e9";
+export const TerraSkyDark = "#0c4a6e";
+export const TerraFlowerPink = "#f472b6";
+export const TerraFlowerPurple = "#a855f7";
+export const TerraFlowerOrange = "#fb923c";
