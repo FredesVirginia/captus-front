@@ -1,7 +1,11 @@
+import MainHeader from "../components/MainHeader";
 
 
 export default function Home() {
   return (
-    <div>H</div>
+    <div>
+      <MainHeader/>
+      
+    </div>
   )
 }

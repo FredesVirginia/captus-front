@@ -6,3 +6,35 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Fluo';
+  src: url('../assets/fonts/Mulish/CHERL___.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chicago';
+  src: url('../assets/fonts/Mulish/Chicago.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'sheep';
+  src: url("../assets/fonts/Mulish/Hey Comic.otf") format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-sheep{
+  font-family: 'sheep', sans-serif;
+}
+.font-chicago{
+   font-family: 'Chicago', sans-serif;
+}
+
+.font-flow{
+   font-family: 'Fluo', sans-serif;
+}
