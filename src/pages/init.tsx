@@ -1,14 +1,32 @@
 import FONDO from "../assets/fonodo32.jpg";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import HOJAS from "../assets/hojaaas.png";
 import Snowfall from "react-snowfall";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router";
+import PrismaticBurst from "../animation/aimation";
 export default function Init() {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const handleClick = () => {
+
+      navigate("/home")
+   
+  };
+
   return (
-    <div
-      className="min-h-screen w-full bg-cover bg-center bg-no-repeat relative flex items-start justify-center  px-4 sm:px-6 lg:px-8"
+    <AnimatePresence mode="wait">
+     
+        <motion.div
+          key="main"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div
+            className="min-h-screen w-full bg-cover bg-center bg-no-repeat relative flex items-start justify-center px-4 sm:px-6 lg:px-8"
       style={{
         backgroundImage: `url(${FONDO})`,
       }}
@@ -51,12 +69,15 @@ export default function Init() {
             transition: { duration: 0.3 }, // Por ejemplo, medio segundo
           }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => navigate("/home")}
+          onClick={() => handleClick()}
         >
           Comienza tu viaje verde hoy
         </motion.button>
       </div>
-    </div>
+          </div>
+        </motion.div>
+      
+    </AnimatePresence>
   );
 }
 
