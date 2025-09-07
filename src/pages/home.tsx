@@ -1,13 +1,12 @@
-import MainHeader from "../components/MainHeader";
-import MainSection from "../components/MainSection";
-
+import { Footer, MainHeader, MainSection, PresentationMain } from "../components";
 
 export default function Home() {
   return (
     <div>
-      <MainHeader/>
-     <MainSection/> 
-      
+      <MainHeader />
+      <PresentationMain />
+      <MainSection />
+      <Footer />
     </div>
-  )
+  );
 }

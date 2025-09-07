@@ -1,4 +1,4 @@
-import FONDO from "../assets/fonodo32.jpg";
+import FONDO from "../assets/fondo61.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import HOJAS from "../assets/hojaaas.png";
 import Snowfall from "react-snowfall";
@@ -36,7 +36,8 @@ export default function Init() {
       <div className="relative z-10 pt-16 sm:pt-20 md:pt-24 lg:pt-30 flex flex-col items-center  max-w-6xl ">
         {/* Título principal */}
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl text-gray-900 lg:text-5xl xl:text-6xl mt-10 font-flow  text-center cursor-pointer select-none"
+        style={{color : "#088408"}}
+          className="text-2xl sm:text-3xl md:text-4xl  lg:text-5xl xl:text-6xl mt-10 font-flow  text-center cursor-pointer select-none"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}

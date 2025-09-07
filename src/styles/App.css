@@ -28,6 +28,35 @@
   font-style: normal;
 }
 
+.animated-underline {
+  position: relative;
+  cursor: pointer;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 4px; /* grosor del subrayado */
+  bottom: -4px; /* espacio justo debajo del texto */
+  left: 0;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+.primary-color{
+  background-color: #088408;
+}
+.secondary-color{
+  background-color: #075C07;
+}
+.font-mulish{
+  font-family: 'Mulish', sans-serif;
+}
 .font-sheep{
   font-family: 'sheep', sans-serif;
 }
