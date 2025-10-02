@@ -1,23 +1,19 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import '../src/styles/App.css'
-import Home from './pages/home'
-import Init from './pages/init'
-import SobreNosotros from './pages/sobreNosotros'
-import Consejos from './pages/consejos'
-import Contacto from './pages/contacto'
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from 'react-hot-toast';
+import Router from './routes/route';
 function App() {
-
+  const queryClient = new QueryClient();
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Init />} />
-         <Route path="/home" element={<Home />} />
-         <Route path="/sobreNosotros" element={<SobreNosotros/>} />
-         <Route path="/consejos" element={<Consejos/>} />
-         <Route path="/contacto" element={<Contacto/>} />
-      </Routes>
+   <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+       
+          <Toaster />
+          <Router />
+      
+      </QueryClientProvider>
     </BrowserRouter>
   )
 }
