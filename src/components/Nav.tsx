@@ -50,9 +50,9 @@ export default function Nav() {
           </p>
         </nav>
         <div className="flex gap-5">
-          <FaRegHeart />
-          <AiOutlineMail />
-          <FaRegUser />
+          <FaRegHeart  size={20}/>
+          <AiOutlineMail size={20}  />
+          <FaRegUser  size={19}/>
         </div>
       </div>
     </motion.div>

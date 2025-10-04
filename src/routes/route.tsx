@@ -10,11 +10,12 @@ import SobreNosotros from "../pages/sobreNosotros";
 import Consejos from "../pages/consejos";
 import Contacto from "../pages/contacto";
 import Init from "../pages/init";
+import NotFoundPage from "../pages/notFoundPage";
 
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/home" element={<Home />} />
       <Route path="/init" element={<Init />} />
       <Route path="/sobreNosotros" element={<SobreNosotros />} />
@@ -29,7 +30,7 @@ export default function Router() {
         }
       />
 
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<NotFoundPage/>} />
     </Routes>
   );
 }

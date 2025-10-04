@@ -36,8 +36,8 @@ export default function MainSection() {
   const [active, setActive] = useState("nuevos");
 
   const baseStyle = "p-2 px-5 rounded-xl font-bold transition duration-300";
-  const activeStyle = "secondary-color text-white";
-  const inactiveStyle = "bg-white border border-green-500 text-gray-700";
+  const activeStyle = "secondary-color text-white !important";
+  const inactiveStyle = "bg-white border border-green-500 text-gray-700 !important";
   const [likedImages, setLikedImages] = useState<{ [key: number]: boolean }>(
     {}
   );

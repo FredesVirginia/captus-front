@@ -11,8 +11,10 @@ import * as Yup from "yup";
 import ARBOL from "../assets/fondoInit.jpg";
 import { useUserStore } from "../store/userStore";
 import { login, type ICredentiales } from "../hooks/useUsers/request";
-
-
+import 'rsuite/Button/styles/index.css';
+import "rsuite/Input/styles/index.css";
+import "rsuite/InputGroup/styles/index.css";
+import "rsuite/Button/styles/index.css";
 export const ACCESS_TOKEN_KEY = "DRY";
 export const REFRESH_TOKEN_KEY = "KISS";
 const INITIAL_VALUES = {

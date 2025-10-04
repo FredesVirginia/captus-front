@@ -1,13 +1,9 @@
-import FONDO1 from "../assets/44-removebg-preview.png";
-import FONDO2 from "../assets/66-removebg-preview.png";
-import FONDO3 from "../assets/55-removebg-preview.png";
-import ICONO from "../assets/90.png";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FaHeart, FaRegUser } from "react-icons/fa";
-import { AiOutlineMail } from "react-icons/ai";
-import { FaRegHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import FONDO1 from "../assets/44-removebg-preview.png";
+import FONDO3 from "../assets/55-removebg-preview.png";
+import FONDO2 from "../assets/66-removebg-preview.png";
 import Nav from "./Nav";
 export default function MainHeader() {
   const images = [FONDO2, FONDO3, FONDO1];
@@ -49,13 +45,13 @@ export default function MainHeader() {
         <div className="flex justify-between -mt-10 primary-color px-36  h-[28rem]">
           <div className="flex flex-col justify-center items-start gap-3">
             <h1
-              style={{ fontFamily: "times new roman" }}
+              style={{ color:"white" }}
               className="text-7xl text-white "
             >
               Terra Nova
             </h1>
             <h1
-              style={{ fontFamily: "times new roman" }}
+              style={{ color : "white" }}
               className="text-2xl translate-x-1 text-white "
             >
               Captus y Suculentas
