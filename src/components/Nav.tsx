@@ -52,7 +52,7 @@ export default function Nav() {
         <div className="flex gap-5">
           <FaRegHeart  size={20}/>
           <AiOutlineMail size={20}  />
-          <FaRegUser  size={19}/>
+          <FaRegUser  onClick={() => handleNavigate("/register")} size={19}/>
         </div>
       </div>
     </motion.div>

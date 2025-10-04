@@ -5,7 +5,7 @@ import 'rsuite/Button/styles/index.css';
 export default function NotFoundPage() {
   const navigate = useNavigate();
   const handleNavigate = ()=>{
-    navigate("/init")
+    navigate("/")
   }
   return (
     <div className="relative h-screen w-screen">

@@ -11,13 +11,17 @@ import Consejos from "../pages/consejos";
 import Contacto from "../pages/contacto";
 import Init from "../pages/init";
 import NotFoundPage from "../pages/notFoundPage";
+import Register from "../pages/register";
 
 export default function Router() {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
+     
+      <Route path="/" element={<Init />} />
+       <Route path="/login" element={<LoginPage />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/init" element={<Init />} />
+   
+      <Route path="/register" element={<Register />} />
       <Route path="/sobreNosotros" element={<SobreNosotros />} />
       <Route path="/consejos" element={<Consejos />} />
       <Route path="/contacto" element={<Contacto />} />
