@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import secureLocalStorage from "react-secure-storage";
 import { Button, Input, InputGroup } from "rsuite";
 import * as Yup from "yup";
-import ARBOL from "../assets/fondoInit.jpg";
+import ARBOL from "../assets/captu2.jpg";
 import { useUserStore } from "../store/userStore";
 import { login, type ICredentiales } from "../hooks/useUsers/request";
 import 'rsuite/Button/styles/index.css';

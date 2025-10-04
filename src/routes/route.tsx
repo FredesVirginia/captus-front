@@ -1,6 +1,6 @@
 import { useEffect, type JSX } from "react";
 import { isExpired } from "react-jwt";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes  , useLocation} from "react-router-dom";
 import secureLocalStorage from "react-secure-storage";
 import LoginPage, { ACCESS_TOKEN_KEY } from "../pages/login";
 import Home from "../pages/home";
@@ -12,30 +12,69 @@ import Contacto from "../pages/contacto";
 import Init from "../pages/init";
 import NotFoundPage from "../pages/notFoundPage";
 import Register from "../pages/register";
-
+import { AnimatePresence, motion } from "framer-motion";
 export default function Router() {
-  return (
-    <Routes>
-     
-      <Route path="/" element={<Init />} />
-       <Route path="/login" element={<LoginPage />} />
-      <Route path="/home" element={<Home />} />
-   
-      <Route path="/register" element={<Register />} />
-      <Route path="/sobreNosotros" element={<SobreNosotros />} />
-      <Route path="/consejos" element={<Consejos />} />
-      <Route path="/contacto" element={<Contacto />} />
-      <Route
-        path="/create-floor/*"
-        element={
-          <IsRequired>
-            <CreateFloor />
-          </IsRequired>
-        }
-      />
+   const location = useLocation();
 
-      <Route path="*" element={<NotFoundPage/>} />
-    </Routes>
+  // Variantes reutilizables para entrada/salida de página
+  const pageVariants = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -30 },
+  };
+  return (
+   <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Init />} />
+
+        {/* ✅ login y register animados */}
+        <Route
+          path="/login"
+          element={
+            <motion.div
+              key="login"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
+              <LoginPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <motion.div
+              key="register"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
+              <Register />
+            </motion.div>
+          }
+        />
+
+        {/* 🔹 el resto sin animación */}
+        <Route path="/home" element={<Home />} />
+        <Route path="/sobreNosotros" element={<SobreNosotros />} />
+        <Route path="/consejos" element={<Consejos />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route
+          path="/create-floor/*"
+          element={
+            <IsRequired>
+              <CreateFloor />
+            </IsRequired>
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 interface Props {

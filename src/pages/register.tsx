@@ -15,6 +15,7 @@ import FONDO from "../assets/captu2.jpg";
 import type { IReqUserRegistration } from "../hooks/useUsers/IReqUser";
 import { useUserHook } from "../hooks/useUsers/useUserHook";
 import { RoleUser } from "../types/enums/enums";
+import { useNavigate } from "react-router";
 export const ACCESS_TOKEN_KEY = "DRY";
 export const REFRESH_TOKEN_KEY = "KISS";
 const INITIAL_VALUES = {
@@ -32,7 +33,7 @@ const VALIDATION_SCHEMA = Yup.object().shape({
 });
 export default function Register() {
   const [visible, setVisible] = useState(false);
- 
+  const navigate = useNavigate()
   const { mutationRegister} = useUserHook()
 
   const formik = useFormik({
@@ -61,6 +62,7 @@ export default function Register() {
         onSuccess : (data : any)=>{
             console.log("Data Regigistration" , data)
             toast.success("Registro correcto")
+            navigate("/login")
         },
         onError : (data : any)=>{
              console.log("Data Regigistration" , data)
@@ -152,7 +154,8 @@ export default function Register() {
           
             type="submit"
             className={`bg-green-600! hover:bg-green-800! transition text-white font-semibold w-full py-3 rounded-xl
-              ${!formik.values.email || !formik.values.nombre ||  !formik.values.phone||  !formik.values.password  ? " cursor-not-allowed text-gray-400!" : "cursor-pointer"}
+              ${!formik.values.email || !formik.values.nombre ||  !formik.values.phone||  !formik.values.password  ? " cursor-not-allowed text-gray-400!" : 
+                "cursor-pointer text-white!"}
             `}
             disabled={!formik.values.email || !formik.values.nombre ||  !formik.values.phone||  !formik.values.password }
           >
