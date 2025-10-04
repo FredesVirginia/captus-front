@@ -16,6 +16,7 @@ import type { IReqUserRegistration } from "../hooks/useUsers/IReqUser";
 import { useUserHook } from "../hooks/useUsers/useUserHook";
 import { RoleUser } from "../types/enums/enums";
 import { useNavigate } from "react-router";
+import { handleApiError } from "../utils/handleApiError";
 export const ACCESS_TOKEN_KEY = "DRY";
 export const REFRESH_TOKEN_KEY = "KISS";
 const INITIAL_VALUES = {
@@ -64,9 +65,9 @@ export default function Register() {
             toast.success("Registro correcto")
             navigate("/login")
         },
-        onError : (data : any)=>{
-             console.log("Data Regigistration" , data)
-            toast.error("Registro Incorrecto")
+        onError : (error: any)=>{
+             console.log("Data Regigistration" , error)
+             handleApiError(error);
         },
        })
     } catch (error: any) {

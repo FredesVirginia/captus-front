@@ -23,6 +23,6 @@ export const register = async (payload: IReqUserRegistration): Promise< { status
     return {...data.data, status: data.status }
   } catch (error: any) {
     console.log("EL ERROR FUE", error.response.data);
-    throw error.response.data;
+      throw error;
   }
 };
