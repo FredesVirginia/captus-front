@@ -13,7 +13,7 @@ export const login = async (credentials: ICredentiales): Promise<IResUser & { st
     return {...data.data, status: data.status }
   } catch (error: any) {
     console.log("EL ERROR FUE", error.response.data);
-    throw error.response.data;
+    throw error;
   }
 };
 

@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import secureLocalStorage from "react-secure-storage";
-import { Button, Input, InputGroup } from "rsuite";
+import { Button, Input, InputGroup, useToaster } from "rsuite";
 import * as Yup from "yup";
 import ARBOL from "../assets/captu2.jpg";
 import { useUserStore } from "../store/userStore";
@@ -15,6 +15,10 @@ import 'rsuite/Button/styles/index.css';
 import "rsuite/Input/styles/index.css";
 import "rsuite/InputGroup/styles/index.css";
 import "rsuite/Button/styles/index.css";
+
+import 'rsuite/Message/styles/index.css'; // Estilos específicos para Message
+import 'rsuite/Toaster/styles/index.css'; // Estilos necesarios para Toaster
+import { handleApiError } from "../utils/handleApiError";
 export const ACCESS_TOKEN_KEY = "DRY";
 export const REFRESH_TOKEN_KEY = "KISS";
 const INITIAL_VALUES = {
@@ -30,6 +34,7 @@ export default function LoginPage() {
   const [visible, setVisible] = useState(false);
   const { setUser } = useUserStore();
   const navigate = useNavigate();
+   const toaster = useToaster();
   const formik = useFormik({
     initialValues: INITIAL_VALUES,
     validationSchema: VALIDATION_SCHEMA,
@@ -59,7 +64,7 @@ export default function LoginPage() {
         navigate("/create-floor");
       }
     } catch (error: any) {
-      toast.error(`Ocurrio un Error ${error.message}`);
+       handleApiError(error , toaster);
     }
   }
 

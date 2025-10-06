@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useMemo } from "react";
 import { useNavigate } from "react-router";
 import Snowfall from "react-snowfall";
-import FONDO from "../assets/fondo61.jpg";
+import FONDO from "../assets/700.jpg";
 import HOJAS from "../assets/hojaaas.png";
 export default function Init() {
   const navigate = useNavigate();
@@ -21,18 +21,18 @@ export default function Init() {
         transition={{ duration: 0.5 }}
       >
         <div
-          className="min-h-screen w-full bg-cover bg-center bg-no-repeat relative flex items-start justify-center px-4 sm:px-6 lg:px-8"
+          className="min-h-screen w-full bg-cover bg-center bg-no-repeat relative flex pl-90 overflow-x-hidden items-start justify-center px-4 sm:px-6 lg:px-8"
           style={{
             backgroundImage: `url(${FONDO})`,
           }}
         >
           <FallingLeaves />
 
-          <div className="relative z-10 pt-16 sm:pt-20 md:pt-24 lg:pt-50 flex flex-col gap-5 items-center  max-w-6xl ">
+          <div className="relative z-10 pt-16 sm:pt-20 md:pt-24 lg:pt-50 flex flex-col gap-5 justify-start items-left bg00 w-full">
             {/* Título principal */}
             <motion.h1
-              style={{ color: "#088408" }}
-              className="text-2xl sm:text-3xl md:text-4xl  lg:text-5xl xl:text-6xl mt-10 font-flow  text-center cursor-pointer select-none"
+              style={{ color: "yellow" }}
+              className="text-2xl sm:text-3xl md:text-4xl  lg:text-5xl xl:text-6xl mt-10 font-flow  text-left cursor-pointer select-none"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -43,7 +43,7 @@ export default function Init() {
 
             {/* Subtítulo */}
             <motion.h4
-              className="text-xl sm:text-3xl md:text-2xl lg:text-2xl xl:text-5xl font-sheep mt-2 sm:mt-4  text-black text-center cursor-pointer select-none"
+              className="text-xl sm:text-3xl md:text-2xl lg:text-2xl xl:text-5xl font-sheep mt-2 sm:mt-4  text-white text-left cursor-pointer select-none"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -55,8 +55,9 @@ export default function Init() {
             {/* Botón animado */}
             <motion.button
             style={{ borderRadius: '1rem' }}
-              className="bg-white/50 hover:bg-green-500 active:bg-green-800 font-bold text-gray-800  text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 
-              rounded-2xl py-2 sm:py-3 md:py-4 mt-5 sm:mt-6 md:mt-8 shadow-lg "
+              className="bg-white/50 hover:bg-green-500 active:bg-green-800 font-bold text-gray-800  
+              text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 
+              rounded-2xl py-2 sm:py-3 md:py-4 mt-5 sm:mt-6 md:mt-8 shadow-lg w-fit"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
