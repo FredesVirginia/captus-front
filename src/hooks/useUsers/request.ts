@@ -1,5 +1,5 @@
 import { captusApi } from "../../api/api";
-import type { IReqUserRegistration } from "./IReqUser";
+import type { IReqFavoritos, IReqUserRegistration } from "./IReqUser";
 import type { IResUser } from "./IResUser";
 
 export interface ICredentiales {
@@ -24,5 +24,15 @@ export const register = async (payload: IReqUserRegistration): Promise< { status
   } catch (error: any) {
     console.log("EL ERROR FUE", error.response.data);
       throw error;
+  }
+};
+
+export const addFavorito = async (payload: IReqFavoritos): Promise< { status: number }> => {
+  try {
+    const data = await captusApi.post("/users/favorites", payload);
+    return {...data.data, status: data.status }
+  } catch (error: any) {
+    console.log("EL ERROR FUE", error.response.data);
+    throw error;
   }
 };

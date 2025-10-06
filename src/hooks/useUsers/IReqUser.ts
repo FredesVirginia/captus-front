@@ -5,3 +5,7 @@ export interface IReqUserRegistration {
     password: string;
     role:     string;
 }
+export interface IReqFavoritos {
+    userId:  number;
+    floorId: number;
+}

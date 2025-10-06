@@ -6,7 +6,7 @@ interface IApiError {
   message?: string;
 }
 
-// No UI here; just map the error to a user-friendly message
+
 
 export function handleApiError(error: any) {
   console.log("🧩 Error capturado:", error);
@@ -21,7 +21,8 @@ export function handleApiError(error: any) {
     VALIDATION_ERROR: "Error de validacion de Datos",
     INVALID_DISCOUNT_VALUE : "Hay un descuento invalido",
     GET_FLOORS_ERROR : "Hubo un error en Traer las Plantas",
-    USER_NOT_FOUND: "El usuario no existe"
+    USER_NOT_FOUND: "El usuario no existe",
+    FLOOR_NOT_FOUND : "La planta seleccionada no existe"
   };
 
   const userMessage =

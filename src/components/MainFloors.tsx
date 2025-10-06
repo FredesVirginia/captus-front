@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useFloors } from "../hooks/useFloors/useFloor";
 import { motion } from "framer-motion";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { ACCESS_TOKEN_KEY } from "../pages/login";
+import secureLocalStorage from "react-secure-storage";
 
 export default function MainFloors() {
   const [likedImages, setLikedImages] = useState<{ [key: number]: boolean }>(
@@ -18,10 +20,18 @@ export default function MainFloors() {
   console.log("DATA", data);
 
   const handleClickAddFavorites = (index: number) => {
-    setLikedImages((prev) => ({
+  
+  const token = secureLocalStorage.getItem(ACCESS_TOKEN_KEY);
+  console.log("TOKEN " , token)
+    if(ACCESS_TOKEN_KEY){
+      setLikedImages((prev) => ({
       ...prev,
       [index]: !prev[index], // cambia true/false para esa imagen
     }));
+    
+    }else{
+      alert("HUIII NO HAS HECHO LOGIN")
+    }
   };
   return (
     <div className="flex flex-col items-center  py-10 px-4">

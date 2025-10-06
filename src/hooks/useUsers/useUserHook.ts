@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { register } from "./request";
-import type { IReqUserRegistration } from "./IReqUser";
+import { addFavorito, register } from "./request";
+import type { IReqFavoritos, IReqUserRegistration } from "./IReqUser";
 
 export const useUserHook = () => {
   const mutationRegister = useMutation({
@@ -8,7 +8,13 @@ export const useUserHook = () => {
     mutationFn: (data: IReqUserRegistration) => register(data),
   });
 
+  const mutationAddFavorito = useMutation({
+    mutationKey : ["favorito"],
+    mutationFn : (data : IReqFavoritos)=> addFavorito(data)
+  })
+
   return {
     mutationRegister,
+    mutationAddFavorito
   };
 };
