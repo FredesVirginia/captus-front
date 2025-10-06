@@ -2,11 +2,11 @@ import EyeCloseIcon from "@rsuite/icons/EyeClose";
 import VisibleIcon from "@rsuite/icons/Visible";
 import { useFormik } from "formik";
 import { useState } from "react";
-import { toast } from "react-hot-toast";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import secureLocalStorage from "react-secure-storage";
-import { Button, Input, InputGroup, useToaster } from "rsuite";
+import { Button, Input, InputGroup } from "rsuite";
+import { useToast } from "../components/ToastProvider";
 import * as Yup from "yup";
 import ARBOL from "../assets/captu2.jpg";
 import { useUserStore } from "../store/userStore";
@@ -34,7 +34,7 @@ export default function LoginPage() {
   const [visible, setVisible] = useState(false);
   const { setUser } = useUserStore();
   const navigate = useNavigate();
-   const toaster = useToaster();
+  const toastApi = useToast();
   const formik = useFormik({
     initialValues: INITIAL_VALUES,
     validationSchema: VALIDATION_SCHEMA,
@@ -57,14 +57,15 @@ export default function LoginPage() {
       const response = await login(trimmedValues);
 
       if (response.access_token != "") {
-        toast.success("Se inició sesión");
+        toastApi.show("Se inició sesión", { type: 'success', duration: 3000 });
         setUser(response.user);
         secureLocalStorage.setItem(ACCESS_TOKEN_KEY, response.access_token);
         console.log("AQUI ");
         navigate("/create-floor");
       }
     } catch (error: any) {
-       handleApiError(error , toaster);
+      const { message } = handleApiError(error);
+      toastApi.show(message, { type: 'warning', duration: 4500 });
     }
   }
 

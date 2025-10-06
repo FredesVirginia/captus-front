@@ -2,11 +2,11 @@ import EyeCloseIcon from "@rsuite/icons/EyeClose";
 import VisibleIcon from "@rsuite/icons/Visible";
 import { useFormik } from "formik";
 import { useState } from "react";
-import { toast } from "react-hot-toast";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
 import { MdOutlineEmail, MdOutlinePermPhoneMsg } from "react-icons/md";
 import { Button, Input, InputGroup } from "rsuite";
+import { useToast } from "../components/ToastProvider";
 import 'rsuite/Button/styles/index.css';
 import "rsuite/Input/styles/index.css";
 import "rsuite/InputGroup/styles/index.css";
@@ -36,6 +36,7 @@ export default function Register() {
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate()
   const { mutationRegister} = useUserHook()
+  const toastApi = useToast();
 
   const formik = useFormik({
     initialValues: INITIAL_VALUES,
@@ -62,16 +63,18 @@ export default function Register() {
        mutationRegister.mutate(trimmedValues , {
         onSuccess : (data : any)=>{
             console.log("Data Regigistration" , data)
-            toast.success("Registro correcto")
+            toastApi.show("Registro correcto", { type: 'success', duration: 3000 })
             navigate("/login")
         },
         onError : (error: any)=>{
              console.log("Data Regigistration" , error)
-             handleApiError(error);
+             const { message } = handleApiError(error);
+             toastApi.show(message, { type: 'error', duration: 4500 });
         },
        })
     } catch (error: any) {
-      toast.error(`Ocurrio un Error ${error.message}`);
+      const { message } = handleApiError(error);
+      toastApi.show(message || `Ocurrió un Error`, { type: 'error', duration: 4500 });
     }
   }
 

@@ -6,9 +6,9 @@ interface IApiError {
   message?: string;
 }
 
-import { Message as RsMessage, toaster as globalToaster } from 'rsuite';
+// No UI here; just map the error to a user-friendly message
 
-export function handleApiError(error: any, toaster?: any) {
+export function handleApiError(error: any) {
   console.log("🧩 Error capturado:", error);
 
   const apiError: IApiError = error?.response?.data || error || {};
@@ -28,24 +28,7 @@ export function handleApiError(error: any, toaster?: any) {
     messages[apiError.code || ""] ||
     "Ocurrió un error inesperado. Inténtalo más tarde.";
 
-// Asegurar que existe un toaster válido. Si no se pasa, crear uno.
-const rsToaster = toaster || globalToaster;
-
-// Evitar crash si no hay entorno de navegador
-if (rsToaster) {
-  rsToaster.push(
-    <RsMessage showIcon type="error" closable style={{
-      backgroundColor: '#f44336',
-      color: 'white',
-      fontWeight: 'bold',
-      borderRadius: 4,
-     
-    }}>
-      {userMessage}
-    </RsMessage>,
-    { placement: 'topEnd' }
-  );
-}
+// No mostrar UI aquí; devolver el mensaje para que la capa de UI lo maneje
 
   console.error("❌ API Error capturado:", apiError);
 
