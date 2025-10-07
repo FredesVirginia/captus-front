@@ -22,16 +22,15 @@ export default function MainFloors() {
   const handleClickAddFavorites = (index: number) => {
   
   const token = secureLocalStorage.getItem(ACCESS_TOKEN_KEY);
-  console.log("TOKEN " , token)
-    if(ACCESS_TOKEN_KEY){
-      setLikedImages((prev) => ({
-      ...prev,
-      [index]: !prev[index], // cambia true/false para esa imagen
-    }));
-    
-    }else{
-      alert("HUIII NO HAS HECHO LOGIN")
-    }
+if (token) {
+  // usuario "logueado"
+  setLikedImages((prev) => ({
+    ...prev,
+    [index]: !prev[index],
+  }));
+} else {
+console.log("ÑO TIENES LOGIN")
+}
   };
   return (
     <div className="flex flex-col items-center  py-10 px-4">
