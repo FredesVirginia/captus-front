@@ -21,14 +21,16 @@ export const ACCESS_TOKEN_KEY = "DRY";
 export const REFRESH_TOKEN_KEY = "KISS";
 const INITIAL_VALUES = {
   nombre: "",
-  phone : 0,
+  phone : "",
   role : RoleUser.USER,
   email: "",
   password: "",
 };
 const VALIDATION_SCHEMA = Yup.object().shape({
   nombre: Yup.string().required("required"),
-  phone: Yup.number().required("required"),
+  phone: Yup.string()
+    .matches(/^[0-9]+$/, "Debe contener solo números")
+    .required("required"),
   email: Yup.string().required("required"),
   password: Yup.string().required("required"),
 });
@@ -90,7 +92,7 @@ export default function Register() {
   
  
     <div className="relative z-10 flex items-center justify-center h-full px-4">
-      <div className="bg-blue-400 backdrop-blur-md rounded-2xl shadow-2xl py-10 px-6 w-full max-w-sm min-h-[480px] flex flex-col justify-center">
+      <div className="bg-white/30 backdrop-blur-md rounded-2xl shadow-2xl py-10 px-6 w-full max-w-sm min-h-[480px] flex flex-col justify-center">
         <form onSubmit={formik.handleSubmit} className="flex   flex-col items-center w-full px-10">
           <div className="mb-6 flex flex-col items-center gap-6 w-full">
             <p className=" text-[24px] md:text-[35px] font-bold text-white text-center">Terra Nova</p>
@@ -102,6 +104,7 @@ export default function Register() {
               </InputGroup.Addon>
               <Input
                 name="nombre"
+                placeholder="Nombre"
                 onChange={(value: string) => {
                   formik.setFieldValue("nombre", value);
                 }}
@@ -115,8 +118,11 @@ export default function Register() {
               </InputGroup.Addon>
               <Input
                 name="phone"
+                placeholder="Telefono Ej: (2966469771)"
                 onChange={(value: string) => {
-                  formik.setFieldValue("phone", value);
+                  // Solo permitir números
+                  const numericValue = value.replace(/[^0-9]/g, '');
+                  formik.setFieldValue("phone", numericValue);
                 }}
                 value={formik.values.phone}
                 className="text-gray-700 bg-gray-200 pl-10 pr-4 rounded-xl py-2 w-full"
@@ -128,6 +134,7 @@ export default function Register() {
               </InputGroup.Addon>
               <Input
                 name="email"
+                placeholder="Email"
                 onChange={(value: string) => {
                   formik.setFieldValue("email", value);
                 }}
@@ -143,6 +150,7 @@ export default function Register() {
               </InputGroup.Button>
               <Input
                 name="password"
+                placeholder="Clave"
                 onChange={(value: string) => {
                   formik.setFieldValue("password", value);
                 }}
@@ -163,7 +171,7 @@ export default function Register() {
             `}
             disabled={!formik.values.email || !formik.values.nombre ||  !formik.values.phone||  !formik.values.password }
           >
-            Iniciar Sesión
+            Registrarse
           </Button>
         </form>
       </div>

@@ -58,7 +58,7 @@ export default function MainHeader() {
             </h1>
           </div>
 
-          <div className="relative w-[20rem] h-[30rem] -translate-y-10 flex items-center justify-center ">
+          <div className="relative w-[20rem] h-[30rem] -translate-y-10 flex items-center justify-center overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.img
                 key={index}

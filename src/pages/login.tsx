@@ -72,6 +72,10 @@ export default function LoginPage() {
   const handleChange = () => {
     setVisible(!visible);
   };
+
+  const handleNavigate =()=>{
+    navigate("/register")
+  }
   return (
     <div className="relative h-screen w-screen">
    
@@ -80,11 +84,11 @@ export default function LoginPage() {
     </div>
   
  
-    <div className="relative z-10 flex items-center justify-center h-full px-4">
+    <div className="relative z-10 flex items-center justify-center h-full px-4 overflow-hidden">
       <div className="bg-white/10 md:bg-white/30 backdrop-blur-md rounded-2xl shadow-2xl py-10 px-6 w-full max-w-sm min-h-[480px] flex flex-col justify-center">
         <form onSubmit={formik.handleSubmit} className="flex flex-col items-center w-full px-10">
           <div className="mb-6 flex flex-col items-center gap-6 w-full">
-            <p className=" text-[24px] md:text-[35px] font-bold text-white text-center">Peps Platform</p>
+            <p className=" text-[24px] md:text-[35px] font-bold text-white text-center">Terra Nova</p>
   
           
             <InputGroup className="bg-white items-center w-full">
@@ -129,6 +133,10 @@ export default function LoginPage() {
           >
             Iniciar Sesión
           </Button>
+          <div className="flex gap-2 mt-2">
+            <p className="text-gray-500">No tienes cuenta?</p>
+            <span className="text-sky-900 cursor-pointer" onClick={handleNavigate}>Registrarse</span>
+          </div>
         </form>
       </div>
     </div>

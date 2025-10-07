@@ -5,7 +5,8 @@ import { GrStatusGood } from "react-icons/gr";
 import { IoIosCloseCircle, IoMdInformationCircle } from "react-icons/io";
 import { IoWarningSharp } from "react-icons/io5";
 import { Button } from 'rsuite';
-
+import { MdNotificationsActive } from "react-icons/md";
+import { motion } from 'framer-motion';
 type ToastType = 'error' | 'success' | 'info' | 'warning' | "confirmation";
 
 export interface ToastOptions {
@@ -123,8 +124,20 @@ const ToastItem = ({ toast, onDismiss }: { toast: ToastData; onDismiss: (id: str
       </span>
       <p className="tn-toast-message">{toast.message}</p>
       <button className="tn-toast-close" onClick={() => onDismiss(toast.id)} aria-label="Cerrar">×</button></>): (
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 items-center'>
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1, 1.2, 1]
+            }}
+            transition={{
+              duration: 0.8,
+              times: [0, 0.2, 0.4, 0.6, 0.8]
+            }}
+          >
+            <MdNotificationsActive size={50}/>
+          </motion.div>
         <p>{toast.message}</p>
+       
         <div className='flex items-center  gap-1'>
             <Button appearance="default" className='hover:!text-black' onClick={handleNavigate}>Login</Button>
             <Button appearance="default" className='hover:!text-black' onClick={() => onDismiss(toast.id)}>Ok</Button>

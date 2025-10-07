@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/* Prevenir scroll horizontal */
+body, html {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Asegurar que el root container ocupe toda la pantalla */
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 /* Toast overlay y estilos */
 .tn-toast-overlay {
   position: fixed;

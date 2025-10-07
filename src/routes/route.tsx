@@ -38,6 +38,14 @@ export default function Router() {
               exit="exit"
               variants={pageVariants}
               transition={{ duration: 0.4, ease: "easeInOut" }}
+              style={{
+                overflow: "hidden",
+                height: "100vh",
+                width: "100vw",
+                position: "fixed",
+                top: 0,
+                left: 0
+              }}
             >
               <LoginPage />
             </motion.div>
@@ -53,6 +61,14 @@ export default function Router() {
               exit="exit"
               variants={pageVariants}
               transition={{ duration: 0.4, ease: "easeInOut" }}
+              style={{
+                overflow: "hidden",
+                height: "100vh",
+                width: "100vw",
+                position: "fixed",
+                top: 0,
+                left: 0
+              }}
             >
               <Register />
             </motion.div>
