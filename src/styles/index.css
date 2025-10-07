@@ -67,6 +67,11 @@
   background: #F59E0B; /* ámbar */
   color: #ffffff;
 }
+
+.tn-toast-confirmation{
+  background: #088408; 
+  color: #ffffff;
+}
 .tn-toast-icon-warning {
   color: #F59E0B;
   background: #ffffff;

@@ -4,14 +4,16 @@ import type { IconType } from 'react-icons';
 import { GrStatusGood } from "react-icons/gr";
 import { IoIosCloseCircle, IoMdInformationCircle } from "react-icons/io";
 import { IoWarningSharp } from "react-icons/io5";
+import { Button } from 'rsuite';
 
-type ToastType = 'error' | 'success' | 'info' | 'warning';
+type ToastType = 'error' | 'success' | 'info' | 'warning' | "confirmation";
 
 export interface ToastOptions {
   id?: string;
   type?: ToastType;
   duration?: number; // ms
   persistentOnHover?: boolean;
+  onNavigate?: () => void;
 }
 
 interface ToastData {
@@ -20,6 +22,7 @@ interface ToastData {
   type: ToastType;
   duration: number;
   persistentOnHover: boolean;
+  onNavigate?: () => void;
 }
 
 interface ToastContextValue {
@@ -55,6 +58,11 @@ const ToastItem = ({ toast, onDismiss }: { toast: ToastData; onDismiss: (id: str
     rafRef.current = requestAnimationFrame(tick);
   }, [hover, toast.duration, toast.id, onDismiss]);
 
+  const handleNavigate = () => {
+    if (toast.onNavigate) {
+      toast.onNavigate();
+    }
+  }
   useEffect(() => {
     rafRef.current = requestAnimationFrame(tick);
     return () => {
@@ -70,6 +78,8 @@ const ToastItem = ({ toast, onDismiss }: { toast: ToastData; onDismiss: (id: str
         return { container: 'tn-toast tn-toast-success' };
       case 'warning':
         return { container: 'tn-toast tn-toast-warning' };
+      case 'confirmation':
+        return { container: 'tn-toast tn-toast-confirmation' };
       default:
         return { container: 'tn-toast tn-toast-info' };
     }
@@ -95,7 +105,8 @@ const ToastItem = ({ toast, onDismiss }: { toast: ToastData; onDismiss: (id: str
       onMouseLeave={() => setHover(false)}
       role="status"
     >
-      <span
+     {
+      toast.type !=="confirmation" ? (<>  <span
         aria-hidden
         style={{
           width: 28,
@@ -111,7 +122,16 @@ const ToastItem = ({ toast, onDismiss }: { toast: ToastData; onDismiss: (id: str
         <typeIcon.Icon size={18} color={typeIcon.color} />
       </span>
       <p className="tn-toast-message">{toast.message}</p>
-      <button className="tn-toast-close" onClick={() => onDismiss(toast.id)} aria-label="Cerrar">×</button>
+      <button className="tn-toast-close" onClick={() => onDismiss(toast.id)} aria-label="Cerrar">×</button></>): (
+        <div className='flex flex-col gap-2'>
+        <p>{toast.message}</p>
+        <div className='flex items-center  gap-1'>
+            <Button appearance="default" className='hover:!text-black' onClick={handleNavigate}>Login</Button>
+            <Button appearance="default" className='hover:!text-black' onClick={() => onDismiss(toast.id)}>Ok</Button>
+        </div>
+        </div>
+      )
+     }
     </div>
   );
 };
@@ -136,6 +156,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
       type: options?.type || 'info',
       duration: options?.duration ?? 4000,
       persistentOnHover: options?.persistentOnHover ?? true,
+      onNavigate: options?.onNavigate,
     };
     setToasts(prev => [...prev, toast]);
     return id;
